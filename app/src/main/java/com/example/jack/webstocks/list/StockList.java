@@ -46,13 +46,13 @@ public class StockList extends AsyncTask<Void, Void, List<String>> {
     public List<String> scrapeStocks() {
         String url = "http://blogs.barrons.com/stockstowatchtoday/";
 
-        Log.d("SL-ss", "Hello World.");
+        //Log.d("SL-ss", "Hello World.");
 
         String response = "";
         try {
             response = makeRequest(url);
 
-            Log.d("SL-ss", "Response: " + response);
+            //Log.d("SL-ss", "Response: " + response);
 
             String regex = "\\([A-Z]+\\)";
             String respText = html2text(response);
@@ -62,16 +62,8 @@ public class StockList extends AsyncTask<Void, Void, List<String>> {
             while (matcher.find()) {
                 result.add(matcher.group(0));
             }
-            Log.d("SL-ss", "Result: " + result.toString());
+            //Log.d("SL-ss", "Result: " + result.toString());
             return result;
-//  TODO: KEVIN: I believe the stuff below will go in StockHttp (other Async) right?
-
-//            try {
-//                JSONObject json = StockHttp.queryYahoo(result);
-//                StockHttp.processJSON(json);
-//            } catch (IOException io) {
-//                io.printStackTrace();
-//            }
         }catch (IOException io) {
             io.printStackTrace();
         }

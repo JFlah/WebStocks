@@ -1,6 +1,8 @@
 package com.example.jack.webstocks.adt;
 
-public class WebStock {
+import java.io.Serializable;
+
+public class WebStock implements Serializable {
     String symbol;
     String percentChange;
     double askPrice = 0.0d;
@@ -16,6 +18,8 @@ public class WebStock {
     double epsEstimateNextYr;
     double yearLow;
     double yearHigh;
+
+    long id;
 
     public WebStock(String symbol, String percentChange, double askPrice, double bidPrice, double dayLow, double dayHigh, int avgDailyVolume,
                     double open, double prevClose, double bookVal, double divShare, double epsEstimateCurrentYr, double epsEstimateNextYr,
@@ -37,8 +41,37 @@ public class WebStock {
         this.yearHigh = yearHigh;
     }
 
+    public WebStock(long id, String symbol, String percentChange, double askPrice, double bidPrice, double dayLow, double dayHigh, int avgDailyVolume,
+                    double open, double prevClose, double bookVal, double divShare, double epsEstimateCurrentYr, double epsEstimateNextYr,
+                    double yearLow, double yearHigh) {
+        this.id = id;
+        this.symbol = symbol;
+        this.percentChange = percentChange;
+        this.askPrice = askPrice;
+        this.bidPrice = bidPrice;
+        this.dayLow = dayLow;
+        this.dayHigh = dayHigh;
+        this.avgDailyVolume = avgDailyVolume;
+        this.open = open;
+        this.prevClose = prevClose;
+        this.bookVal = bookVal;
+        this.divShare = divShare;
+        this.epsEstimateCurrentYr = epsEstimateCurrentYr;
+        this.epsEstimateNextYr = epsEstimateNextYr;
+        this.yearLow = yearLow;
+        this.yearHigh = yearHigh;
+    }
+
     public String getSymbol() {
         return symbol;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getPercentChange() {

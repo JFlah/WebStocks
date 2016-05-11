@@ -1,14 +1,12 @@
 package com.example.jack.webstocks.http;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.jack.webstocks.adt.WebStock;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,10 +36,8 @@ public class StockHttp extends AsyncTask<Void, Void, List<WebStock>> {
 
         URL fullUrl = new URL(fullUrlStr);
         InputStream is = fullUrl.openStream();
-//        JSONTokener tok = new JSONTokener(is);
         String tok = convertStreamToString(is);
         JSONObject result = new JSONObject(tok);
-        Log.d("SHttp-qY", "Result: " + result.toString());
         return result;
     }
 
@@ -55,7 +51,7 @@ public class StockHttp extends AsyncTask<Void, Void, List<WebStock>> {
             return "";
         StringBuilder sb = new StringBuilder();
         for (String stock : stocks) {
-            //This checks if the first char is a paren, if it is, like (GOOG) it strips and returns GOOG
+            // This checks if the first char is a paren, if it is, like (GOOG) it strips and returns GOOG
             //  If it isnt, it just returns the stock. This allows it to be used when the list format is just [GOOG,APPL]
             //  Potentially useful for scraping other websites in the future.
             stock = stock.charAt(0)=='(' ? stock.substring(1,stock.length()-1) : stock;
@@ -71,7 +67,7 @@ public class StockHttp extends AsyncTask<Void, Void, List<WebStock>> {
         int count = query.getInt("count"); // That is how we get from JSON back to a Java object. Also getString(String key);
         // if count is 1 or less, just return. Who cares about 1 or 0 result anyway.
         if (count <= 1) {
-            return new ArrayList<WebStock>();
+            return new ArrayList<>();
         }
         //Count is more than 1 - now what? get the quote
         JSONArray quote = results.getJSONArray("quote");
@@ -132,7 +128,7 @@ public class StockHttp extends AsyncTask<Void, Void, List<WebStock>> {
                     yearLow,
                     yearHigh
             );
-            Log.d("SH-pj", "Webstock no." + i + " " + webStock.toString());
+            //Log.d("SH-pj", "Webstock no." + i + " " + webStock.toString());
             stockList.add(webStock);
         }
         return stockList;
@@ -142,13 +138,13 @@ public class StockHttp extends AsyncTask<Void, Void, List<WebStock>> {
     protected List<WebStock> doInBackground(Void... params) {
         try {
             JSONObject stockJSON = queryYahoo(this.stockSymbols);
-            Log.d("SH-dib","JSON: " + stockJSON.toString());
+            //Log.d("SH-dib","JSON: " + stockJSON.toString());
             return processJSON(stockJSON);
         } catch (IOException io) {
             io.printStackTrace();
         } catch (JSONException je) {
             je.printStackTrace();
         }
-        return new ArrayList<WebStock>();
+        return new ArrayList<>();
     }
 }
