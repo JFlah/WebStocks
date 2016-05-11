@@ -11,6 +11,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
     Button favButton;
+    Button mapsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+                startActivity(intent);
+            }
+        });
+        mapsButton = (Button) findViewById(R.id.mapButton);
+        mapsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
             }
         });

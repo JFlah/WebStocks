@@ -1,0 +1,53 @@
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/the_map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="com.google.android.gms.maps.MapFragment"
+    map:cameraTilt="45"
+    map:uiZoomControls="true"
+    map:cameraZoom="3">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="100px"
+        >
+        <Button
+            android:id="@+id/geocodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="doClick"
+            android:text="Find Headquarters" />
+        <EditText
+            android:id="@+id/loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter company" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <Button android:id="@+id/terrain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Terrain"
+            android:onClick="myClickHandler" android:padding= "1px" />
+        <Button android:id="@+id/hybrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Hybrid"
+            android:onClick="myClickHandler" android:padding= "1px" />
+        <Button android:id="@+id/sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Satellite"
+            android:onClick="myClickHandler" android:padding= "1px" />
+        <Button android:id="@+id/normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Normal"
+            android:onClick="myClickHandler" android:padding= "1px" />
+    </LinearLayout>
+
+</fragment>
