@@ -52,11 +52,22 @@
         android:background="#ff1b00b8"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take New Profile Photo"
+        android:layout_margin="10dp"
+        android:textSize="25sp"
+        android:id="@+id/mainPicButton"
+        android:textColor="#ffffffff"
+        android:background="#ff1b00b8"
+        />
+
     <ImageView
         android:id="@+id/mainPicView"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
-        android:layout_height="250dp"
+        android:layout_height="175dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:contentDescription="Thumbnail" />

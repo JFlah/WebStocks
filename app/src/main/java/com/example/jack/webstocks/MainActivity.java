@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 
     Button favButton;
     Button mapsButton;
+    Button picButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
+        picButton = (Button) findViewById(R.id.mainPicButton);
+        picButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
                 startActivity(intent);
             }
         });
