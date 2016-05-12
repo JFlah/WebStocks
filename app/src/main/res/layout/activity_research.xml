@@ -8,7 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#3b42ff"
     tools:context="com.example.jack.webstocks.ResearchActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30sp"
+        android:text="Stock Info:"/>
 
     <ImageView
         android:layout_width="match_parent"

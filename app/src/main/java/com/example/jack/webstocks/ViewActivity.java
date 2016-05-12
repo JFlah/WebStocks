@@ -21,6 +21,7 @@ public class ViewActivity extends Activity {
     Button delAll;
     Button delSelected;
     Button research;
+    Button profilePic;
     ListView favLV;
     TextView error;
 
@@ -34,6 +35,7 @@ public class ViewActivity extends Activity {
         delAll = (Button) findViewById(R.id.delAllButton);
         delSelected = (Button) findViewById(R.id.delSelectedButton);
         research = (Button) findViewById(R.id.researchButton);
+        profilePic = (Button) findViewById(R.id.cameraButton);
         favList = new ArrayList<>();
         error = (TextView) findViewById(R.id.error);
 
@@ -94,6 +96,14 @@ public class ViewActivity extends Activity {
                 } else {
                     error.setText("Please select a single stock to research");
                 }
+            }
+        });
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewActivity.this, PhotoActivity.class);
+                startActivity(intent);
             }
         });
     }

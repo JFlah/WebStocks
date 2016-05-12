@@ -2,11 +2,21 @@ package com.example.jack.webstocks;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends Activity {
 
@@ -17,6 +27,25 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView photoPreview = (ImageView)
+                findViewById(R.id.mainPicView);
+        photoPreview.setVisibility(View.INVISIBLE);
+
+        // Set photo if exists
+
+        String path = Environment.getExternalStorageDirectory().toString();
+        File file = new File(path, "ProfilePhoto.jpg");
+
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            Bitmap b = BitmapFactory.decodeStream(fis);
+            b = Bitmap.createScaledBitmap(b, 400, 400, false);
+            photoPreview.setVisibility(View.VISIBLE);
+            photoPreview.setImageBitmap(b);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         favButton = (Button) findViewById(R.id.viewButton);
         favButton.setOnClickListener(new View.OnClickListener() {
